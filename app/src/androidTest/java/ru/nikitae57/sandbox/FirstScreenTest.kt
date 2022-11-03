@@ -3,6 +3,7 @@ package ru.nikitae57.sandbox
 import android.view.View
 import android.widget.ImageView
 import androidx.core.graphics.drawable.toBitmap
+import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.platform.app.InstrumentationRegistry
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
@@ -32,8 +33,9 @@ class FirstScreenTest : TestCase() {
                     appContext.theme
                 )
 
-                // this.view.check(ViewAssertions.matches(DrawableMatcher(R.drawable.ic_error)))
-                hasDrawable(R.drawable.ic_error)
+                view.check(ViewAssertions.matches(DrawableMatcher(R.drawable.ic_error))) // this works
+                hasDrawable(R.drawable.ic_error) // this works
+                hasDrawable(expectedDrawable) // this doesn't 👺
             }
         }
     }
